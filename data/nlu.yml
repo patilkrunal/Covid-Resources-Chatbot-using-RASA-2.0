@@ -41,7 +41,13 @@ nlu:
 - intent: corona_help
   examples: |
     - corona help
-    
+    - covid help
+    - corona
+    - covid
+    - covid status
+    - corona resourses
+
+  
 - intent: pincode1_entry
   examples: |
     - [422101](pincode1)

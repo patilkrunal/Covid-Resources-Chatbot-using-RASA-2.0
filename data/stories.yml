@@ -17,49 +17,17 @@ stories:
   - intent: greet
   - action: action_get_entity
   - intent: corona_help
-  - action: action_get_entity
+  - action: action_use_previous_pincode
   - intent: affirm
-  - action: action_show_all_categories
+  - action: action_use_previous_category
   - intent: affirm
   - action: action_show_all_categories
 
 - story: actual path 2
   steps: 
-  - intent: greet
-  - action: action_get_entity
   - intent: corona_help
-  - action: action_get_entity
+  - action: action_use_previous_pincode
   - intent: affirm
   - action: action_show_all_categories
-  - intent: deny
-  - action: action_show_all_categories
-  - intent: show_all_categories
-  - action: action_show_all_categories
-
-- story: actual path 3
-  steps: 
-  - intent: greet
-  - action: action_get_entity
-  - intent: corona_help
-  - action: action_get_entity
-  - intent: deny
-  - intent: pincode1_entry
-  - action: action_get_entity
-  - action: action_show_all_categories
   - intent: affirm
-  - action: action_show_all_categories
-
-- story: actual path 4
-  steps: 
-  - intent: greet
-  - action: action_get_entity
-  - intent: corona_help
-  - action: action_get_entity
-  - intent: deny
-  - intent: pincode1_entry
-  - action: action_get_entity
-  - action: action_show_all_categories
-  - intent: deny
-  - action: action_show_all_categories
-  - intent: show_all_categories
   - action: action_show_all_categories

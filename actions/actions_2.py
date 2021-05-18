@@ -26,7 +26,7 @@ class ActionEntity(Action):
         
         print("------------\n", CATEGORY, DISTRICT)
 
-        if tracker.latest_message['intent'].get('category')=='deny' or CATEGORY is None: #check denial intent in user's latest message
+        if CATEGORY is None: #check denial intent in user's latest message
             response = requests.get(f"{URL}/categories").json() # requesting the api for states data
             message = ""
             for cat in response["data"]:
@@ -35,7 +35,7 @@ class ActionEntity(Action):
             dispatcher.utter_message(text = "Select your category")
 
             return []
-        elif tracker.latest_message['intent'].get('category')=='affirm' or CATEGORY:
+        elif CATEGORY:
             if CATEGORY:
                 try:
                     CATEGORY = re.sub("\(.*?\)","",CATEGORY).replace('&', 'and')

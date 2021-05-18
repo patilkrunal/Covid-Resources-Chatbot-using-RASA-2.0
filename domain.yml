@@ -14,6 +14,8 @@ intents:
 actions:
   - action_get_entity
   - action_show_all_categories
+  - action_use_previous_pincode
+  - action_use_previous_category
   
 entities:
   - pincode1
