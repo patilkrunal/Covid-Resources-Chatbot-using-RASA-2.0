@@ -21,12 +21,15 @@ class ActionEntity(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        print("previous category")
         CATEGORY = tracker.get_slot("category")
         DISTRICT = tracker.get_slot("district")
         
         print("------------\n", CATEGORY, DISTRICT)
+        print(tracker.latest_message['intent'])
 
-        if tracker.latest_message['intent'].get('category')=='deny': #check denial intent in user's latest message
+        if tracker.latest_message['intent']['name']=='deny': #check denial intent in user's latest message
+            print("previous categories deny")
             response = requests.get(f"{URL}/categories").json() # requesting the api for states data
             message = ""
             for cat in response["data"]:
@@ -35,7 +38,8 @@ class ActionEntity(Action):
             dispatcher.utter_message(text = "Select your category")
 
             return []
-        elif tracker.latest_message['intent'].get('category')=='affirm':
+        elif tracker.latest_message['intent']['name']=='affirm':
+            print("previous categories affirm")
             if CATEGORY:
                 try:
                     CATEGORY = re.sub("\(.*?\)","",CATEGORY).replace('&', 'and')
@@ -47,14 +51,22 @@ class ActionEntity(Action):
                     print(f"{URL}/resource?city={dist}&category={cat}")
                     
                     responses = requests.get(f"{URL}/resource?city={dist}&category={cat}").json()["data"]
-                    print(responses)
+                    # print(responses)
                     message = ""
+                        
                     for response in responses:
                         message = message + response["category"] + "\n" + response["city"] + "\n" + response["contact"] + "\n" + response["description"] + "\n" + response["organisation"] + "\n" + response["phone"] + "\n" + response["state"]
                         dispatcher.utter_message(message)
+                    if not responses:
+                        dispatcher.utter_message("No resources found.")
+
                 except:
                     dispatcher.utter_message('Please Enter valid PinCode !')
                     return []
             else:
-                print("no category mentioned")
+                print("No category mentioned")
+        else:
+            dispatcher.utter_message(
+            text=f"Do you want to get {CATEGORY}. Press yes to confirm or no to change?")
+
         return [SlotSet("category", CATEGORY)]

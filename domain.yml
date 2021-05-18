@@ -10,12 +10,15 @@ intents:
   - pincode1_entry
   - corona_help
   - show_all_categories
+  - ask_category
+  - get_resource_directly
 
 actions:
   - action_get_entity
   - action_show_all_categories
   - action_use_previous_pincode
   - action_use_previous_category
+  - action_get_resource_directly
   
 entities:
   - pincode1

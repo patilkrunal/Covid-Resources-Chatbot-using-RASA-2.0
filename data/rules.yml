@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: thanks path
+  steps:
+  - intent: Thanks
+  - action: utter_Thanks
+
+- rule: thanks path
+  steps:
+  - intent: Thanks
+  - action: utter_Thanks

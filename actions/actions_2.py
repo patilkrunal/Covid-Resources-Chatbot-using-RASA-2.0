@@ -36,25 +36,22 @@ class ActionEntity(Action):
 
             return []
         elif CATEGORY:
-            if CATEGORY:
-                try:
-                    CATEGORY = re.sub("\(.*?\)","",CATEGORY).replace('&', 'and')
-                    DISTRICT = re.sub("\(.*?\)","",DISTRICT).replace('&', 'and')
-                    
-                    cat = urllib.parse.quote(CATEGORY, safe='')
-                    dist = urllib.parse.quote(DISTRICT, safe='')
-                    
-                    print(f"{URL}/resource?city={dist}&category={cat}")
-                    
-                    responses = requests.get(f"{URL}/resource?city={dist}&category={cat}").json()["data"]
-                    print(responses)
-                    message = ""
-                    for response in responses:
-                        message = message + response["category"] + "\n" + response["city"] + "\n" + response["contact"] + "\n" + response["description"] + "\n" + response["organisation"] + "\n" + response["phone"] + "\n" + response["state"]
-                        dispatcher.utter_message(message)
-                except:
-                    dispatcher.utter_message('Please Enter valid PinCode !')
-                    return []
-            else:
-                print("no category mentioned")
+            try:
+                CATEGORY = re.sub("\(.*?\)","",CATEGORY).replace('&', 'and')
+                DISTRICT = re.sub("\(.*?\)","",DISTRICT).replace('&', 'and')
+                
+                cat = urllib.parse.quote(CATEGORY, safe='')
+                dist = urllib.parse.quote(DISTRICT, safe='')
+                
+                print(f"{URL}/resource?city={dist}&category={cat}")
+                
+                responses = requests.get(f"{URL}/resource?city={dist}&category={cat}").json()["data"]
+                # print(responses)
+                message = ""
+                for response in responses:
+                    message = message + response["category"] + "\n" + response["city"] + "\n" + response["contact"] + "\n" + response["description"] + "\n" + response["organisation"] + "\n" + response["phone"] + "\n" + response["state"]
+                    dispatcher.utter_message(message)
+            except:
+                dispatcher.utter_message('Please Enter valid PinCode !')
+                return []
         return [SlotSet("category", CATEGORY)]

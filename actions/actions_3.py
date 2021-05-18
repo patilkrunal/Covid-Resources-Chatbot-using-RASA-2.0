@@ -20,11 +20,18 @@ class ActionEntity(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         PINCODE = tracker.get_slot('pincode1')
-        if tracker.latest_message['intent'].get('pincode1')=='deny':
+        print("previous pincode")
+        print("------------\n", PINCODE)
+        print(tracker.latest_message['intent'])
+
+
+        if tracker.latest_message['intent']['name']=='deny':
+            print("previous pincode deny")
             dispatcher.utter_message(text = "Please share the pincode?")
             return []
         
-        elif tracker.latest_message['intent'].get('pincode1')=='affirm':
+        elif tracker.latest_message['intent']['name']=='affirm':
+            print("previous pincode affirm")
             response = requests.get(f"{URL}/{tracker.get_slot('pincode1')}").json()
             result = ""
             DISTRICT = ""
@@ -38,8 +45,8 @@ class ActionEntity(Action):
                 
                 dispatcher.utter_message(text = result)
             except:
-                dispatcher.utter_message('Please Enter valid Pincode')
-            
+                pass
+            print('action3 affirm')
             return [SlotSet("district", DISTRICT)]
         else:
             dispatcher.utter_message(

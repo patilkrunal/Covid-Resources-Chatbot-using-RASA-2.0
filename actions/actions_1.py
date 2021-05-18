@@ -6,8 +6,8 @@ from rasa_sdk.forms import FormAction
 from rasa_sdk.events import SlotSet, AllSlotsReset, Restarted, UserUtteranceReverted, ConversationPaused
 
 import requests
-URL = "https://api.postalpincode.in/pincode"
 
+URL = "https://api.postalpincode.in/pincode"
 logger = logging.getLogger(__name__)
 
 class ActionEntity(Action):

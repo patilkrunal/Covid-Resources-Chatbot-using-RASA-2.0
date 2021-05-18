@@ -55,17 +55,30 @@ nlu:
     - pincode1 is [422101](pincode1)
     - pincode1 is [422101](pincode1)
     
+- intent: get_resource_directly
+  examples: |
+    - Get [Free food](category) resources for [60036](pincode1)
+    - [Hospitals and Centers](category) in [500081](pincode1)
+    
 - intent: show_all_categories
   examples: |
     - [CoVID-19 Testing Lab](category)
     - [Free Food](category)
     - [Hospitals and Centers](category)
+    
+- intent: ask_category
+  examples: |
+    - 
 
 - regex: state
   examples: |
     - ^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$
 
 - regex: district
+  examples: |
+    - ^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$
+
+- regex: category
   examples: |
     - ^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$
 
