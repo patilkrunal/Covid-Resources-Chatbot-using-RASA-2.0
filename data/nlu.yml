@@ -1,0 +1,68 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - good morning
+    - good evening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - bye
+    - bye bye
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    
+- intent: Thanks
+  examples: |
+    - Thanks
+    - thanks
+    - Thank You
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - who are you
+    - tell me about yourself    
+
+- intent: corona_help
+  examples: |
+    - corona help
+    
+- intent: pincode1_entry
+  examples: |
+    - [422101](pincode1)
+    - My pincode1 is [422101](pincode1)
+    - pincode1 is [422101](pincode1)
+    - pincode1 is [422101](pincode1)
+    
+- intent: show_all_categories
+  examples: |
+    - [CoVID-19 Testing Lab](category)
+    - [Free Food](category)
+    - [Hospitals and Centers](category)
+
+- regex: state
+  examples: |
+    - ^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$
+
+- regex: district
+  examples: |
+    - ^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$
+
+- regex: pincode1
+  examples: |
+    - \d{6}

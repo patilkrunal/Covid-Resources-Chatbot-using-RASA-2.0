@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"/home/kp/Desktop/rasa/data/test.py","tests":[{"id":1621251939757,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/kp/Desktop/rasa/data/test.py","group":"local","local":true}

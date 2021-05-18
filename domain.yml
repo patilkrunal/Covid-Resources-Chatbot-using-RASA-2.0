@@ -1,0 +1,49 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - Thanks
+  - bot_challenge
+  - pincode1_entry
+  - corona_help
+  - show_all_categories
+
+actions:
+  - action_get_entity
+  - action_show_all_categories
+  
+entities:
+  - pincode1
+  - state
+  - district
+  - category
+
+slots:
+  pincode1:
+    type: unfeaturized
+  state:
+    type: unfeaturized
+  district:
+    type: unfeaturized
+  category:
+    type: unfeaturized
+
+responses:  
+  utter_happy:
+  - text: "Wow! I am glad to know that"
+
+  utter_goodbye:
+  - text: "GoodBye! Hope To See You Soon !:))"
+
+  utter_iamabot:
+  - text: "I am a COVID-19 Stats bot\n"
+
+  utter_Thanks:
+  - text: "Your Welcome . Glad I could be of some help!:))"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
